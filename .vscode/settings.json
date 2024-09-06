@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Apple Picker Prototype.sln"
+    "dotnet.defaultSolution": "apple-picker-proto.sln"
 }
