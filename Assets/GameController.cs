@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject scoreCounter = GameObject.Find("ScoreCounter");
+        scoreCounter.GetComponent<TMP_Text>().text = "Score: 0";
         basketList = new List<GameObject>();
         for (int i = 0; i < numBaskets; i++) {
             GameObject tempBasket = Instantiate(basketPrefab);
@@ -48,7 +50,7 @@ public class GameController : MonoBehaviour
         basketList.RemoveAt(basketIndex);
         Destroy(basketToDelete);
         if (basketIndex == 0) {
-            SceneManager.LoadScene("_Scene_0");
+            GameOver();
         }
     }
 
@@ -68,7 +70,10 @@ public class GameController : MonoBehaviour
     public void IncreaseDifficulty() {
         TreeController appleTree = GameObject.Find("AppleTree").GetComponent<TreeController>();
         appleTree.speed *= speedMultiplier;
-        appleTree.secondsBetweenAppleDrops *= dropIntervalMultiplier;
+        appleTree.secondsBetweenFruitDrops *= dropIntervalMultiplier;
         appleTree.chanceToChangeDirection *= directionChangeMultiplier;
+    }
+    public void GameOver() {
+        SceneManager.LoadScene("GameOverScreen");
     }
 }

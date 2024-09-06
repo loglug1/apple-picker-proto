@@ -4,14 +4,16 @@ public class TreeController : MonoBehaviour
 {
     [Header("Set in Inspector")]
     public GameObject applePreFab;
+    public GameObject watermelonPrefab;
     public float speed = 1f;
     public float leftAndRightEdge = 10f;
     public float chanceToChangeDirection = 0.1f;
-    public float secondsBetweenAppleDrops = 1f;
+    public float secondsBetweenFruitDrops = 1f;
+    public float watermelonChance = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("DropApple", 2f);
+        Invoke("DropFruit", 2f);
     }
 
     // Update is called once per frame
@@ -35,8 +37,12 @@ public class TreeController : MonoBehaviour
         }
     }
 
-    void DropApple() {
-        Instantiate(applePreFab, transform.position, transform.rotation);
-        Invoke("DropApple", secondsBetweenAppleDrops);
+    void DropFruit() {
+        if (Random.Range(0f,1f) > watermelonChance) {
+            Instantiate(applePreFab, transform.position, transform.rotation);
+        } else {
+            Instantiate(watermelonPrefab, transform.position, transform.rotation);
+        }
+        Invoke("DropFruit", secondsBetweenFruitDrops);
     }
 }

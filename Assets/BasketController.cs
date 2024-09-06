@@ -10,9 +10,7 @@ public class BasketController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject scoreCounter = GameObject.Find("ScoreCounter");
-        TMP_Text scoreCounterText = scoreCounter.GetComponent<TMP_Text>();
-        scoreCounterText.text = "0";
+        
     }
 
 
@@ -31,7 +29,10 @@ public class BasketController : MonoBehaviour
         if (collidedWith.tag == "Apple") {
             GameController gameController = Camera.main.GetComponent<GameController>();
             gameController.RewardPlayer();
-            Debug.Log("Did thing!");
+            Destroy(collidedWith);
+        } else if (collidedWith.tag == "Watermelon") {
+            GameController gameController = Camera.main.GetComponent<GameController>();
+            gameController.GameOver();
             Destroy(collidedWith);
         }
     }

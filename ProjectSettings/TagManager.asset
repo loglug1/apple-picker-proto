@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Apple
+  - Watermelon
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,7 @@ TagManager:
   - AppleTree
   - Water
   - UI
-  - Apple
+  - Fruit
   - Basket
   - 
   - 
